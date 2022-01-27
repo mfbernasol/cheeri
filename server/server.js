@@ -1,6 +1,16 @@
 const express = require('express');
+const mongoose = require('mongoose')
 
 const app = express();
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect('mongodb+srv://mfbern:2160p@cluster0.hcemo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {})
+  }catch(err) {
+    console.log(err.message)
+    process.exit(1)
+  }
+}
 
 app.get('/api', (req, res) => {
   res.send("It's working!");
