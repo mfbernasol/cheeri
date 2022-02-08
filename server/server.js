@@ -1,31 +1,19 @@
+require('dotenv').config();
 const express = require('express');
-const mongoose = require('mongoose')
-const routes = require('./routes')
-
 const app = express();
 
-// const connectDB = async () => {
-//   try {
-//     await mongoose.connect('mongodb+srv://mfbern:2160p@cluster0.hcemo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {})
-    
-//   }catch(err) {
-//     console.log(err.message)
-//     process.exit(1)
-//   }
-// }
+const mongoose = require('mongoose');
 
-mongoose
-	.connect("mongodb+srv://mbern:2160p@cluster0.hcemo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useNewUrlParser: true })
-	.then(() => {
+mongoose.connect(process.env.DB_URL, { useNewURLParser: true });
+const db = mongoose.connection;
+db.on('error', (error) => console.log(error));
+db.once('open', () => console.log('Connected to Database'));
 
-		app.use(express.json()) // new
-		app.use("/api", routes)
+app.use(express.json())
 
-	})
+const postsRouter = require('./routes/posts')
+app.use('/posts',postsRouter)
 
-app.get('/api', (req, res) => {
-  res.send("It's working!");
-});
 
 const PORT = process.env.PORT || 4000;
 
