@@ -1,43 +1,62 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function App() {
-  const [post, setPost] = useState('');
+  const [post, setPost] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post('https://cheeri-15d7e-default-rtdb.firebaseio.com/posts.json', {
-        body: 'This is a new post.',
-      })
-      .then((response) => {
-        setPost(response.data);
-      });
-  };
+  // 'http://localhost:4000/posts'
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios('http://localhost:4000/posts');
+
+      setPost(result.data);
+      console.log(result.data);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div className='form-control'>
-          <label className='label'>
-            <span className='label-text'>Cheers</span>
-          </label>
-          <input
-            type='text'
-            name='post'
-            value={post}
-            placeholder='Enter you message'
-            className='input input-bordered mx-10'
-            onChange={(e) => setPost(e.target.value)}
-          />
-        </div>
+      <div>
+        <form>
+          <div className='form-control'>
+            <label className='label'>
+              <span className='label-text'>Name</span>
+            </label>
+            <input
+              type='text'
+              name='name'
+              placeholder='Enter your name'
+              className='input input-bordered mx-10 w-1/2'
+            />
+            <label className='label'>
+              <span className='label-text'>Share Something</span>
+            </label>
+            <input
+              type='text'
+              name='content'
+              placeholder='Enter you message'
+              className='input input-bordered mx-10  w-1/2'
+            />
+          </div>
+          <div className='mx-24 py-10'>
+            <button className='btn btn-primary w-1/2'>Submit</button>
+          </div>
+        </form>
+      </div>
 
-        <div className='mx-24 py-10'>
-          <button className='btn btn-primary w-full' onClick={handleSubmit}>
-            Submit
-          </button>
-        </div>
-      </form>
+      <div>
+        <ul>
+          {post.map((data) => (
+            <li key={data._id}>
+              {data.content}
+            </li>
+          
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
