@@ -5,35 +5,31 @@ function App() {
   const [post, setPost] = useState([]);
   const [message, setMessage] = useState('');
   const [name, setName] = useState('');
-  // {post.map((data) => (
-  //   <li key={data._id}>{data.content}</li>
-  // ))}
+
+  //fetch data from API
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios('http://localhost:4000/posts');
-      const dates = result.data;
-      dates.sort((a, b) => {
+      const sortedResults = result.data;
+      sortedResults.sort((a, b) => {
+       
         return new Date(b.createdAt) - new Date(a.createdAt);
       });
-      setPost(result.data);
-      // console.log(result.data)
-      //  new Date(result.data[i].createdAt).toLocaleString()
+      setPost(sortedResults);
 
-      //  console.log(dates)
-
-     
     };
 
     fetchData();
   }, []);
 
+  //ADD data to API
   let handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = { name: name, content: message };
     try {
       await axios.post('http://localhost:4000/posts', newPost);
 
-      setPost([...post, newPost]);
+      setPost([newPost,...post ]);
       setName('');
       setMessage('');
     } catch (err) {
@@ -89,7 +85,11 @@ function App() {
         <ul>
           {post.map((data) => (
             <li key={data._id} className='mb-5'>
-              <PostCard name={data.name} content={data.content} />
+              <PostCard
+                name={data.name}
+                content={data.content}
+                date={data.createdAt}
+              />
             </li>
           ))}
         </ul>

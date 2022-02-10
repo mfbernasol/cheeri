@@ -1,9 +1,9 @@
 import React from 'react';
 
-const PostCard = ({ name, content }) => {
+const PostCard = ({ name, content,date }) => {
   return (
     <div className=''>
-      <div className='relative grid grid-cols-1 gap-4 p-4 mb-8 border-rounded-lg bg-white shadow-lg'>
+      <div className='relative grid grid-cols-1 gap-4 p-4 mb-8 border-rounded-xl bg-white shadow-md'>
         <div className='relative flex gap-4'>
           <div className='flex flex-col w-full'>
             <div className='flex flex-row justify-between'>
@@ -14,7 +14,7 @@ const PostCard = ({ name, content }) => {
                 <i className='fa-solid fa-trash'></i>
               </a>
             </div>
-            <p className='text-gray-400 text-sm'>Feb 9, 2021</p>
+            <p className='text-gray-400 text-sm'>{date}</p>
           </div>
         </div>
         <p className='-mt-4 text-gray-500'>{content}</p>
