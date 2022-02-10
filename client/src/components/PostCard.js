@@ -14,7 +14,7 @@ const PostCard = ({ name, content,date }) => {
                 <i className='fa-solid fa-trash'></i>
               </a>
             </div>
-            <p className='text-gray-400 text-sm'>{date}</p>
+            <p className='text-gray-400 text-sm'>{new Date(date).toLocaleString()}</p>
           </div>
         </div>
         <p className='-mt-4 text-gray-500'>{content}</p>

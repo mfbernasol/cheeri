@@ -11,12 +11,11 @@ function App() {
     const fetchData = async () => {
       const result = await axios('http://localhost:4000/posts');
       const sortedResults = result.data;
+      //sort results by date in descending order
       sortedResults.sort((a, b) => {
-       
         return new Date(b.createdAt) - new Date(a.createdAt);
       });
       setPost(sortedResults);
-
     };
 
     fetchData();
@@ -54,6 +53,7 @@ function App() {
                 <input
                   type='text'
                   className='border bg-gray-100 py-2 px-4 w-full md:w-96 outline-none focus:ring-2 focus:ring-indigo-400 rounded'
+                  value={name ?? ''}
                   placeholder='Your name'
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -84,13 +84,14 @@ function App() {
       <div>
         <ul>
           {post.map((data) => (
-            <li key={data._id} className='mb-5'>
+            <li key={data._id} className='mt-5 mb-5'>
               <PostCard
                 name={data.name}
                 content={data.content}
                 date={data.createdAt}
-              />
+              /> 
             </li>
+          
           ))}
         </ul>
       </div>
