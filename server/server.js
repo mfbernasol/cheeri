@@ -14,7 +14,7 @@ app.use(cors());
 const postsRouter = require('./routes/posts');
 app.use('/posts', postsRouter);
 
-app.get('/', (req, res) => res.json({ msg: 'Welcome to the Cheeri API' }));
+app.get('/', (req, res) => res.send('API is running'));
 
 const PORT = process.env.PORT || 4000;
 
