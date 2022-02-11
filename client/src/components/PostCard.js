@@ -3,7 +3,7 @@ import React from 'react';
 const PostCard = ({ name, content, date }) => {
   return (
     <div className=''>
-      <div className='relative grid grid-cols-1 gap-4 p-4 mb-8 mx-2 md:mx-48 rounded-xl border-2  bg-white shadow-md'>
+      <div className='relative grid grid-cols-1 gap-4 p-4 mb-8 mx-2 md:mx-96 md: rounded-xl border-2  bg-white shadow-md'>
         <div className='relative flex gap-4'>
           <div className='flex flex-col w-full'>
             <div className='flex flex-row justify-between'>
