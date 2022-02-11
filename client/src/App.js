@@ -8,7 +8,7 @@ function App() {
 
   //fetch data from API
   const fetchData = async () => {
-    const result = await axios('http://localhost:4000/posts');
+    const result = await axios('https://cheeri.herokuapp.com/posts');
     const sortedResults = result.data;
     //sort results by date in descending order
     sortedResults.sort((a, b) => {
@@ -91,7 +91,7 @@ function App() {
       {/* Display Posts */}
       <div>
         <ul>
-          {post.map((data,id) => (
+          {post.map((data, id) => (
             <li key={id} className='mt-5 mb-5'>
               <PostCard
                 name={data.name}
