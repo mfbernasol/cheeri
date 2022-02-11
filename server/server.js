@@ -1,10 +1,10 @@
-require('dotenv').config();
+require('dotenv').config({path:'.env'});
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.DB_URL, { useNewURLParser: true });
+mongoose.connect(process.env.MONGO_URI, { useNewURLParser: true });
 const db = mongoose.connection;
 db.on('error', (error) => console.log(error));
 db.once('open', () => console.log('Connected to Database'));
