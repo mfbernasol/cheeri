@@ -42,7 +42,7 @@ function App() {
   return (
     <div className=''>
       <h1 className='text-center text-2xl font-semibold'>cheeri </h1>
-      <h2 className='text-center'>a little place to share some good 😄 </h2>
+      <h2 className='text-center'>a little place to share some good news😄 </h2>
       <form>
         <div className=' bg-transparent flex items-center'>
           <div className='container mx-auto max-w-md hover:shadow-lg transition duration-300'>
