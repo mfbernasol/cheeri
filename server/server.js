@@ -1,4 +1,4 @@
-require('dotenv').config({path:'.env'});
+require('dotenv').config({ path: '.env' });
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -13,8 +13,6 @@ app.use(express.json());
 app.use(cors());
 const postsRouter = require('./routes/posts');
 app.use('/posts', postsRouter);
-
-app.get('/', (req, res) => res.send('API is running'));
 
 const PORT = process.env.PORT || 4000;
 
