@@ -28,7 +28,7 @@ function App() {
 
     const newPost = { name: name, content: message };
     try {
-      await axios.post('http://localhost:4000/posts', newPost);
+      await axios.post('https://cheeri.herokuapp.com/posts', newPost);
 
       setPost([newPost, ...post]);
       fetchData();
@@ -52,7 +52,7 @@ function App() {
                   className='mr-4 text-gray-700 font-bold inline-block mb-2'
                   htmlFor='name'
                 >
-                  Name (be annonymous)
+                  Name
                 </label>
                 <input
                   type='text'
