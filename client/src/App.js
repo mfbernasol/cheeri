@@ -65,7 +65,7 @@ function App() {
               </div>
               <label className='label'>
                 <span className='label-text font-semibold'>
-                  share something good that happened to you
+                  share something good that has happened to you
                 </span>
               </label>
               <textarea
