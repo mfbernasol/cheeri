@@ -1,5 +1,5 @@
 # Cheeri
-[View Demo](https://tender-almeida-fdb532.netlify.app)
+[View Live Demo](https://tender-almeida-fdb532.netlify.app)
 ## Example
 ![cheeri-demo](https://user-images.githubusercontent.com/46685981/153768945-4bc88ebd-b891-4ac8-b613-38782b59810a.gif)
 
