@@ -6,8 +6,6 @@
 ## Description
 A message board similar to twitter to demonstrate full stack web development with React and Node/Express.js
 
-For more of a positive twist, users are encouraged to share good things that has happened in their posts.
-
 ## Built With 
 ### Front-End:
 - Create React App
